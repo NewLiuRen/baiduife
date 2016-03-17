@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <title>水平垂直居中margin方式</title>
+    <style>
+        body, html {
+            height: 100%;
+        }
+        div {
+            position: relative;
+            top: 50%;
+            width: 400px;
+            height: 200px;
+            background: #ccc;
+            margin: -100 auto;
+            overflow: hidden;
+        }
+        div::before, div::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #fc0;
+            -webkit-border-radius: 50%;
+               -moz-border-radius: 50%;
+                    border-radius: 50%;
+        }
+        div::before {
+            top: -50px;
+            left: -50px;
+        }
+        div::after {
+            bottom: -50px;
+            right: -50px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

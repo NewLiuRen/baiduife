@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <title>水平垂直居中</title>
+    <style>
+        body, html {
+            height: 100%;
+        }
+        body {
+            background-image: -webkit-radial-gradient(top center,ellipse,#edc,#a98,#654);
+            background-image:    -moz-radial-gradient(top center,ellipse,#edc,#a98,#654);
+            background-image:         radial-gradient(top center,ellipse,#edc,#a98,#654);
+        }
+        div {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 500px;
+            height: 160px;
+            line-height: 160px;
+            margin: auto;
+            background: rgba(120, 120, 120, 0.2);
+            overflow: hidden;
+            text-align: center;
+            -webkit-border-radius: 30px;
+               -moz-border-radius: 30px;
+                    border-radius: 30px;
+        }
+        span {
+            position: relative;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        span a {
+            text-decoration: none;
+            color: #fff;
+        }
+        span a:hover {
+            text-shadow: 2px 2px 2px rgba(100, 100, 100, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span><a href="http://newliuren.github.io/baiduife/task4/margin.html">margin方式实现</a></span>
+        <span><a href="http://newliuren.github.io/baiduife/task4/position.html">position方式实现</a></span>
+        <span><a href="http://newliuren.github.io/baiduife/task4/flex.html">flex方式实现</a></span>
+    </div>
+</body>
+</html>
