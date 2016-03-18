@@ -164,6 +164,8 @@ textarea {
 }
 .top .pic1 {
     display: inline-block;
+    width: 641px;
+    height: 301px;
     position: relative;
     margin-right: 45px;
 }
@@ -350,9 +352,15 @@ textarea {
     font-size: 70px;
     color: #f5e327;
 }
-.bottom-left img {
+.bottom-left .img {
     float: right;
+    width: 167px;
+    height: 288px;
     margin: 20px 0 10px 15px;
+}
+.bottom-left img {
+    display: block;
+    width: 100%;
 }
 .bottom-right .img {
     position: relative;
