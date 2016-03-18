@@ -1,0 +1,491 @@
+@charset "UTF-8";
+
+/*reset*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    font-family: "Microsoft Yahei";
+    font-size: 12px;
+    background: #5e5e5d;
+}
+
+:focus {
+    outline: 1;
+}
+
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary {
+    display:block;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted #000;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+textarea {
+    margin: 0;
+}
+
+.clear::after {
+    content: "";
+    clear: both;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: visible;
+    font-size: 0;
+}
+
+/*
+    黑体：SimHei
+    宋体：SimSun
+    楷体：KaiTi
+    微软雅黑体：Microsoft YaHei
+*/
+
+.wrap {
+    width: 980px;
+    height: 1386px;
+    padding-left: 44px;
+    margin: 0 auto;
+    background: #fff;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.wrap header {
+    width: 892px;
+    height: 61px;
+    margin-bottom: 34px;
+    border-bottom: 2px solid #938e8c;
+    vertical-align: bottom;
+}
+.wrap header h6 {
+    display: inline-block;
+    position: relative;
+    width: 110px;
+    height: 61px;
+    background: #d45d5c;
+    font-family: "SimHei";
+    font-size: 12px;
+    font-weight: normal;
+    color: #fff;
+}
+.wrap header p {
+    position: absolute;
+    top: 45px;
+    left: 3px;
+}
+.wrap header span {
+    display: inline-block;
+    float: right;
+    padding: 45px 0 1px 5px;
+    font-family: "SimHei";
+    color: #d45d5c;
+}
+
+.top {
+    height: 301px;
+    margin-bottom: 40px;
+}
+.top .pic1 {
+    display: inline-block;
+    position: relative;
+    margin-right: 45px;
+}
+.top .pic1 img {
+    display: block;
+    width: 100%;
+}
+.top .pic1::before,
+.top .pic1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 191px;
+    height: 301px;
+    z-index: 999;
+}
+.top .pic1::before {
+    left: 0;
+    background: rgba(66, 140, 89, 0.5);
+}
+.top .pic1::after {
+    right: 0;
+    background: rgba(204, 118, 128, 0.5);
+}
+.top-right {
+    display: inline-block;
+    width: 203px;
+    height: 296px;
+    padding-top: 3px;
+    border-top: 2px solid #cc8091;
+    overflow: hidden;
+}
+.top-right h3 {
+    display: inline-block;
+    height: 31px;
+    border-bottom: 2px solid #000;
+    font-family: "Microsoft Yahei";
+    font-size: 16px;
+    font-weight: normal;
+    color: #000;
+}
+.top-right h3 span {
+    font-size: 24px;
+}
+.top-right p {
+    height: 14px;
+    font-family: "KaiTi";
+    font-size: 12px;
+    color: #676767;
+}
+.top-right h1 {
+    height: 153px;
+    margin-left: -18px;
+    font-family: "Microsoft Yahei";
+    font-style: italic;
+    font-weight: normal;
+    font-size: 116px;
+    color: #75b86b;
+}
+.top-right h2 {
+    float: left;
+    height: 72px;
+    margin-top: -12px;
+    font-family: "Microsoft Yahei";
+    font-weight: normal;
+    font-size: 55px;
+    color: #cc8091;
+}
+.top-right b {
+    display: inline-block;
+    padding-top: 15px;
+    line-height: 15px;
+    font-size: 21px;
+    font-weight: normal;
+    color: #cc8091;
+}
+.top-right strong {
+    font-size: 12px;
+    font-weight: normal;
+    color: #bcbbba;
+}
+
+.center {
+    margin-bottom: 65px;
+}
+.center article {
+    display: inline-block;
+    margin-right: 16px;
+    vertical-align: top;
+}
+.center article h2 {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.center-left {
+    width: 228px;
+}
+.center-left h2 {
+    border-bottom: 1px solid #418c59;
+    font-family: "Microsoft Yahei";
+    color: #418c59;
+}
+.center-left p {
+    line-height: 16px;
+    font-family: "SimSun";
+    font-size: 12px;
+    color: #767777;
+}
+.center-center {
+    width: 205px;
+}
+.center-center h2 {
+    border-bottom: 1px solid #d2994f;
+    color: #d2994f;
+}
+.center-center p {
+    font-family: "Microsoft Yahei";
+    font-size: 12px;
+    color: #231815;
+    opacity: 0.7;
+}
+.center-right h2 {
+    border-bottom: 1px solid #cc7680;
+    color: #cc7680;
+}
+.center-right p {
+    font-family: "Microsoft Yahei";
+    color: #231815;
+    opacity: 0.7;
+}
+.center-right i {
+    color: #cc7680;
+}
+
+.bottom article {
+    display: inline-block;
+    vertical-align: top;
+}
+.bottom-left {
+    width: 415px;
+    margin-right: 20px;
+}
+.bottom-left hgroup {
+    border-bottom: 2px solid #11456b;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+.bottom-left h2 {
+    line-height: 40px;
+    font-family: "SimHei";
+    font-size: 42px;
+    font-weight: bold;
+    color: #11456b;
+}
+.bottom-left h2 i {
+    font-size: 72px;
+    color: #f5e327;
+}
+.bottom-left h3 {
+    font-family: "SimHei";
+    font-size: 33px;
+    font-weight: bold;
+    color: #11456b;
+}
+.bottom-left p {
+    line-height: 16px;
+    font-family: "SimSun";
+    font-size: 12px;
+    color: #767777;
+}
+.bottom-left p:nth-of-type(3),
+.bottom-left p:nth-of-type(4) {
+    text-indent: 2em;
+}
+.bottom-left p span {
+    float: left;
+    height: 80px;
+    line-height: 80px;
+    margin-right: 14px;
+    vertical-align: top;
+    font-family: "Microsoft Yahei";
+    font-size: 70px;
+    color: #f5e327;
+}
+.bottom-left img {
+    float: right;
+    margin: 20px 0 10px 15px;
+}
+.bottom-right .img {
+    position: relative;
+    width: 458px;
+    height: 257px;
+    margin-bottom: 20px;
+}
+.bottom-right img {
+    display: block;
+    width: 100%;
+}
+.bottom-right .info {
+    position: absolute;
+    bottom: 0;
+    width: 458px;
+    height: 52px;
+    padding-top: 9px;
+    background: rgba(20, 20, 20, 0.5);
+}
+.bottom-right .info span {
+    display: inline-block;
+    height: 44px;
+    line-height: 44px;
+    padding-left: 10px;
+    margin-left: 40px;
+    border-left: 3px solid #72b16a;
+    font-family: "Microsoft Yahei";
+    font-size: 26px;
+    color: #fff;
+}
+.bottom-right .info i {
+    font-family: "Microsoft Yahei";
+    letter-spacing: 140%;
+    color: #72b16a;
+}
+.bottom-right .text {
+    width: 459px;
+    height: 318px;
+    background: #eeedd6;
+    overflow: hidden;
+}
+.bottom-right .text ul {
+    margin: 40px 0 30px 30px;
+    list-style: none;
+    margin-right: 30px;
+}
+.bottom-right .text li {
+    position: relative;
+    padding-left: 15px;
+    margin: 20px 0;
+    font-family: "SimSun";
+    font-size: 16px;
+    color: #5a5b5b;
+}
+.bottom-right .text li::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -3px;
+    border-bottom: 6px solid #425878;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+.bottom-right .text li i {
+    display: inline-block;
+    line-height: 20px;
+    float: right;
+    font-size: 12px;
+    color: #5a5b5b;
+}
+.bottom-right .text div {
+    display: inline-block;
+    vertical-align: top;
+}
+.bottom-right .text-left {
+    width: 260px;
+    height: 130px;
+    padding-top: 30px;
+    background: #d45d5c;
+}
+.bottom-right .text-left p {
+    float: left;
+    height: 86px;
+    line-height: 86px;
+    margin: 0 5px 0 10px;
+    border-right: 2px solid #fff;
+    font-size: 110px;
+    color: #fff;
+}
+.bottom-right .text-left i {
+    float: left;
+    font-family: "SimHei";
+    font-size: 21px;
+    color: #fff;
+}
+.bottom-right .text-left span {
+    float: left;
+    font-family: "Microsoft Yahei";
+    font-size: 12px;
+    color: #fff;
+}
+.bottom-right .text-right {
+    width: 190px;
+}
+.bottom-right .text-right span {
+    height: 30px;
+    font-family: "SimHei";
+    font-size: 72px;
+    font-style: normal;
+    color: #d45d5c;
+}
+.bottom-right .text-right span:first-child {
+    float: left;
+    margin: -15px 0 0 -30px;
+}
+.bottom-right .text-right span:last-child {
+    float: right;
+    margin: 0 -20px 0 0;
+}
+.bottom-right .text-right p {
+    margin: 7px 0 0 7px;
+    font-family: "SimHei";
+    font-size: 14px;
+    font-style: italic;
+    color: #5a5a5a;
+}
+.wrap footer {
+    width: 892px;
+    border-top: 1px solid #938e8c;
+    margin-top: 50px;
+    text-align: right;
+    font-family: "SimHei";
+    font-size: 12px;
+    color: #d45d5c;
+}
