@@ -180,6 +180,21 @@ header .active a {
     background-size: cover;
     overflow: hidden;
 }
+.floor1 h2,
+.floor1 div,
+.floor1 a {
+    position: relative;
+    z-index: 10;
+}
+.floor1 .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
 .floor1 h2 {
     position: absolute;
     top: 230px;
@@ -302,7 +317,7 @@ header .active a {
     position: relative;
     z-index: 10;
 }
-.mask {
+.floor4 .mask {
     position: absolute;
     left: 0;
     top: 0;
