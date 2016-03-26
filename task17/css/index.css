@@ -1,0 +1,74 @@
+select {
+  width: 120px;
+  height: 30px;
+  border: 1px solid #999;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+fieldset {
+  width: 80%;
+  margin-bottom: 30px;
+  border: none;
+  border-top: 1px dashed #5EC7EB;
+}
+fieldset legend {
+  padding: 3px 10px;
+  background: #5E97EB;
+  color: #fff;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+}
+fieldset span {
+  display: inline-block;
+  margin-left: 10px;
+  font-family: "SimHei";
+  font-size: 12px;
+  font-weight: bold;
+  color: #666;
+}
+.aqi-chart-wrap {
+  position: relative;
+  width: 98%;
+  height: 500px;
+  margin: 50px auto 0;
+  padding: 0 50px;
+  border-left: 3px solid #666;
+  border-bottom: 3px solid #666;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.aqi-chart-wrap div {
+  position: absolute;
+  bottom: 0;
+  display: inline-block;
+  vertical-align: bottom;
+}
+.aqi-chart-wrap div:hover {
+  opacity: 0.8;
+}
+.chart-info {
+  text-align: center;
+  font-family: "Microsoft Yahei";
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+#tooltip {
+  display: none;
+  position: absolute;
+  padding: 6px;
+  background: rgba(80, 80, 80, 0.8);
+  color: #fff;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+}
+#tooltip p {
+  padding: 0 5px;
+  margin: 5px 0;
+  font-family: "Microsoft Yahei";
+}
