@@ -1,0 +1,46 @@
+input,
+button {
+    border: 1px solid #999;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+input {
+    width: 150px;
+    height: 20px;
+}
+input:focus {
+    -webkit-box-shadow: 0 0 3px rgba(40, 116, 222, 1), 0 0 15px rgba(126, 166, 222, 0.6);
+       -moz-box-shadow: 0 0 3px rgba(40, 116, 222, 1), 0 0 15px rgba(126, 166, 222, 0.6);
+            box-shadow: 0 0 3px rgba(40, 116, 222, 1), 0 0 15px rgba(126, 166, 222, 0.6);
+}
+div {
+    position: relative;
+    height: 300px;
+    margin-top: 20px;
+}
+div div {
+    position: absolute;
+    bottom: 0;
+    min-width: 20px;
+    padding: 2px;
+    overflow: auto;
+    background: #F24141;
+    color: #fff;
+    font-family: "Microsoft Yahei";
+    font-size: 10px;
+    text-align: center;
+    cursor: pointer;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-transition: left .5s ease;
+       -moz-transition: left .5s ease;
+            transition: left .5s ease;
+}
+div div:hover {
+    opacity: 0.8;
+    -webkit-box-shadow: 0 0 10px rgba(242, 133, 133, 0.8);
+       -moz-box-shadow: 0 0 10px rgba(242, 133, 133, 0.8);
+            box-shadow: 0 0 10px rgba(242, 133, 133, 0.8);
+}
