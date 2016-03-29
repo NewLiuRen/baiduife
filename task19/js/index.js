@@ -44,8 +44,9 @@
     /**
      * 排序(冒泡)
      */
-    function arrSort (arr, fn) {
-        var timer = null,
+    function bubbleSort (arr) {
+        var arrClone = [],
+            queue = [],
             tmp, i, j;
 
         for (i=arr.length ; i>0 ; i-=1) {
@@ -54,10 +55,12 @@
                     tmp = arr[j];
                     arr[j] = arr[j+1];
                     arr[j+1] = tmp;
+                    arrClone = arr.slice(0);
+                    queue.push(arrClone);
                 }
-                fn(arr);
             }
         }
+        return queue.reverse();
     }
     /**
      * 生成随机数组
@@ -72,14 +75,14 @@
     /**
      * 验证表单
      */
-    function validate (num) {
+    function validate (num, range) {
         var regexp = /^\d+$/g;
 
         if (!regexp.test(num*1)) {
             alert('请填入数字');
             return false;
         } else {
-            if (num<10 || num>100) {
+            if (range && (num<10 || num>100)) {
                 alert('填入数字范围为10~100');
                 return false;
             }
@@ -110,17 +113,32 @@
             sort = lr_util.$('sort'),
             wrap = lr_util.$('wrap'),
             div = lr_util.$t('div', wrap),
-            ctrl = new CtrlArray();
+            btns = lr_util.$t('button'),
+            ctrl = new CtrlArray(),
+            timer = null;
 
         var btnEvent = function (ele, type) {
             lr_util.addHandler(ele, 'click', function () {
-                var num = lr_util.trim(input.value);
-                if (validate(num)) {
+                var num = lr_util.trim(input.value),
+                    flag = /in/i.test(type);
+                if (validate(num, flag)) {
                     ctrl[type](num);
                     render(ctrl.getArray());
                 }
                 input.select();
             });
+        };
+
+        var btnDisable = function () {
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].setAttribute('disabled', true);
+            }
+        };
+
+        var btnEnable = function () {
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].removeAttribute('disabled');
+            }
         };
 
         btnEvent(lIn, 'lIn');
@@ -142,12 +160,24 @@
         });
 
         lr_util.addHandler(createNum, 'click', function () {
-            ctrl.setArray(randomArr(10));
+            ctrl.setArray(randomArr(50));
             render(ctrl.getArray());
         });
 
         lr_util.addHandler(sort, 'click', function () {
-            arrSort(ctrl.getArray(), render);
+            var arr = bubbleSort(ctrl.getArray()),
+                show = [];
+
+            timer = setInterval(function () {
+                if (arr.length) {
+                    show = arr.pop();
+                    render(show);
+                    btnDisable();
+                } else {
+                    clearInterval(timer);
+                    btnEnable();
+                }
+            }, 50);
         });
     }
 
