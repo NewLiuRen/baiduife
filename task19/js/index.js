@@ -42,26 +42,53 @@
         }
     };
     /**
-     * 排序(冒泡)
+     * 排序
      */
-    function bubbleSort (arr) {
-        var arrClone = [],
-            queue = [],
-            tmp, i, j;
+    var arrSort = {
+        // 冒泡
+        bubble : function (arr) {
+            var arrClone = [],
+                queue = [],
+                tmp, i, j;
 
-        for (i=arr.length ; i>0 ; i-=1) {
-            for (j=0 ; j<i ; j+=1) {
-                if (arr[j] > arr[j+1]) {
-                    tmp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = tmp;
-                    arrClone = arr.slice(0);
-                    queue.push(arrClone);
+            for (i=arr.length ; i>0 ; i-=1) {
+                for (j=0 ; j<i ; j+=1) {
+                    if (arr[j] > arr[j+1]) {
+                        tmp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = tmp;
+                        arrClone = arr.slice(0);
+                        queue.push(arrClone);
+                    }
                 }
             }
+            return queue.reverse();
+        },
+        // 插入
+        insert : function (arr) {
+            var arrClone = [],
+                queue = [],
+                i, tmp, key;
+
+            for(i=1 ; i<arr.length ; i++){
+                tmp= arr[i];
+                key= i-1;
+
+                while(key>=0&& tmp< arr[key]){
+                    arr[key+1]= arr[key];
+                    key--;
+                }
+
+                if((key+1)!= i){
+                    arr[key+1]= tmp;
+                }
+
+                arrClone = arr.slice(0);
+                queue.push(arrClone);
+            }
+            return queue.reverse();
         }
-        return queue.reverse();
-    }
+    };
     /**
      * 生成随机数组
      */
@@ -95,7 +122,7 @@
     function render (array) {
         var wrap = lr_util.$('wrap'),
             html = array.map(function (e, i, arr) {
-                return '<div style="left:'+(i*21)+'px;height:'+(e*1.5)+'px;">'+e+'</div>';
+                return '<div style="left:'+(i*21)+'px;height:'+(e*1.6)+'px;">'+e+'</div>';
             }).join('');
 
         wrap.innerHTML = html;
@@ -114,6 +141,7 @@
             wrap = lr_util.$('wrap'),
             div = lr_util.$t('div', wrap),
             btns = lr_util.$t('button'),
+            select = lr_util.$('sortType'),
             ctrl = new CtrlArray(),
             timer = null;
 
@@ -165,7 +193,8 @@
         });
 
         lr_util.addHandler(sort, 'click', function () {
-            var arr = bubbleSort(ctrl.getArray()),
+            var type = select.value,
+                arr = arrSort[type](ctrl.getArray()),
                 show = [];
 
             timer = setInterval(function () {

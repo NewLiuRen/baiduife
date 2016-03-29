@@ -1,5 +1,6 @@
 input,
-button {
+button,
+select {
     border: 1px solid #999;
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
