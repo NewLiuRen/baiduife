@@ -47,6 +47,9 @@
     var arrSort = {
         // 冒泡
         bubble : function (arr) {
+            if (!arr) {
+                return ;
+            }
             var arrClone = [],
                 queue = [],
                 tmp, i, j;
@@ -66,6 +69,9 @@
         },
         // 插入
         insert : function (arr) {
+            if (!arr) {
+                return ;
+            }
             var arrClone = [],
                 queue = [],
                 i, tmp, key;
@@ -196,6 +202,10 @@
             var type = select.value,
                 arr = arrSort[type](ctrl.getArray()),
                 show = [];
+
+            if (!arr) {
+                return;
+            }
 
             timer = setInterval(function () {
                 if (arr.length) {
