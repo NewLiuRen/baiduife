@@ -83,14 +83,16 @@
                 while(key>=0&& tmp< arr[key]){
                     arr[key+1]= arr[key];
                     key--;
+                    arrClone = arr.slice(0);
+                    queue.push(arrClone);
                 }
 
                 if((key+1)!= i){
                     arr[key+1]= tmp;
+                    arrClone = arr.slice(0);
+                    queue.push(arrClone);
                 }
 
-                arrClone = arr.slice(0);
-                queue.push(arrClone);
             }
             return queue.reverse();
         }
