@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>IFE JavaScript Task 18</title>
+    <style>
+        input, button {border: 1px solid #999; -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; }
+        input {width: 150px; height: 20px; }
+        input:focus {-webkit-box-shadow: 0 0 3px rgba(40, 116, 222, 1), 0 0 15px rgba(126, 166, 222, 0.6); -moz-box-shadow: 0 0 3px rgba(40, 116, 222, 1), 0 0 15px rgba(126, 166, 222, 0.6); box-shadow: 0 0 3px rgba(40, 116, 222, 1), 0 0 15px rgba(126, 166, 222, 0.6);}
+        div div {float: left; min-width: 30px; height: 30px; line-height: 30px; padding: 8px; margin: 10px 5px; overflow: auto; background: #F24141; color: #fff; font-family: "Microsoft Yahei"; font-size: 16px; text-align: center; cursor: pointer;}
+        div div:hover {opacity: 0.8; -webkit-box-shadow: 0 0 10px rgba(242, 133, 133, 0.8); -moz-box-shadow: 0 0 10px rgba(242, 133, 133, 0.8); box-shadow: 0 0 10px rgba(242, 133, 133, 0.8);}
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="请输入数字" id="input" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="left-in">左侧入</button>
+    <button id="right-in">右侧入</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="left-out">左侧出</button>
+    <button id="right-out">右侧出</button>
+    <div id="wrap"></div>
+
+    <script src="js/lr_util.js"></script>
+    <script>
+        (function () {
+            var array = [];
+
+            function ctrlArray (arr) {
+                return {
+                    rIn : function (num) {
+                        arr.push(num);
+                    },
+                    rOut : function (num) {
+                        var tip = arr.pop(num);
+                        alert('右侧删除数字' + tip);
+                    },
+                    lIn : function (num) {
+                        arr.unshift(num);
+                    },
+                    lOut : function (num) {
+                        var tip = arr.shift(num);
+                        alert('左侧删除数字' + tip);
+                    },
+                    remove : function (index) {
+                        arr.splice(index, 1);
+                    }
+                };
+            }
+
+            function validate (num) {
+                var regexp = /^\d+$/g;
+
+                if (!regexp.test(num*1)) {
+                    alert('请填入数字');
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            function render () {
+                var wrap = lr_util.$('wrap'),
+                    html = array.map(function (e, i, arr) {
+                        return '<div>'+e+'</div>';
+                    }).join('');
+
+                wrap.innerHTML = html;
+            }
+
+            function init () {
+                var input = lr_util.$('input'),
+                    lIn = lr_util.$('left-in'),
+                    lOut = lr_util.$('left-out'),
+                    rIn = lr_util.$('right-in'),
+                    rOut = lr_util.$('right-out'),
+                    wrap = lr_util.$('wrap'),
+                    div = lr_util.$t('div', wrap),
+                    ctrl = ctrlArray(array);
+
+                var btnEvent = function (ele, type) {
+                    lr_util.addHandler(ele, 'click', function () {
+                        var num = lr_util.trim(input.value);
+                        if (validate(num)) {
+                            ctrl[type](num);
+                            render();
+                        }
+                        input.select();
+                    });
+                };
+
+                btnEvent(lIn, 'lIn');
+                btnEvent(lOut, 'lOut');
+                btnEvent(rIn, 'rIn');
+                btnEvent(rOut, 'rOut');
+
+                lr_util.addHandler(wrap, 'click', function (e) {
+                    var event = lr_util.getEvent(e),
+                        target = lr_util.getTarget(event),
+                        divs = Array.prototype.slice.call(this.childNodes, 0);
+                        index = -1;
+
+                    if (target.nodeName.toLowerCase() === 'div') {
+                        index = divs.indexOf(target);
+                        ctrl.remove(index);
+                        render();
+                    }
+                });
+
+            }
+
+            init();
+        })();
+    </script>
+</body>
+</html>

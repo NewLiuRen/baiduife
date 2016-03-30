@@ -1,0 +1,71 @@
+$columns: 12;
+$gutter: 20px;
+
+%clearfix {
+    &:before,
+    &:after{
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+        overflow: hidden;
+    }
+}
+
+%text_overflow {
+    overflow: hidden;
+    word-break:keep-all;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+}
+
+.container {
+    width: 100%;
+}
+.container [class*='col-'] {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.row {
+    @extend %clearfix;
+}
+
+[class*='col-'] {
+    float: left;
+    min-height: 1px;
+}
+
+@mixin createGrid ($type) {
+    @for $col from 1 through $columns {
+        .col-#{$type}-#{$col} {
+            width: -webkit-calc(#{100% * $col / $columns} - #{$gutter});
+            width:    -moz-calc(#{100% * $col / $columns} - #{$gutter});
+            width:         calc(#{100% * $col / $columns} - #{$gutter});
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    @include createGrid('sm');
+}
+
+@media (min-width: 768px) {
+    @include createGrid('md');
+}
+
+.box {
+    height: 50px;
+    line-height: 40px;
+    margin: $gutter/2;
+    padding: 5px;
+    border: 1px solid #999;
+    background: #eee;
+    text-align: center;
+    color: #F24141;
+    cursor: pointer;
+    @extend %text_overflow;
+}

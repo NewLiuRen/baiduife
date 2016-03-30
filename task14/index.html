@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+</head>
+<body>
+
+    <h3>污染城市列表</h3>
+    <label>过滤条件：大于<input type="text" id="aqi-input" /><span id="tip"></span></label>
+    <ul id="aqi-list">
+    <!--
+    <li>第一名：福州（样例），10</li>
+    <li>第二名：福州（样例），10</li> -->
+    </ul>
+
+    <script src="js/lr_util.js"></script>
+    <script type="text/javascript">
+
+        var aqiData = [
+          ["北京", 90],
+          ["上海", 50],
+          ["福州", 10],
+          ["广州", 50],
+          ["成都", 90],
+          ["西安", 100]
+        ];
+
+        (function () {
+
+          /*
+          在注释下方编写代码
+          遍历读取aqiData中各个城市的数据
+          将空气质量指数大于60的城市显示到aqi-list的列表中
+          */
+
+          var input = document.getElementById('aqi-input'),
+              tip = document.getElementById('tip'),
+              list = document.getElementById('aqi-list');
+
+          //
+          var showTip = function (val, fn) {
+              var txt = isNaN(val) ? '请输入数字' : '';
+
+              lr_util.setInnerText(tip, txt);
+
+              return val*1;
+          };
+
+          var showList = function (num) {
+              var docFrag = document.createDocumentFragment();
+
+              aqiData.sort(function (a, b) {
+                return (b[1] - a[1]);
+              }).forEach(function (e, i, arr) {
+                if (e[1] > num) {
+                  var item = document.createElement('li');
+                  lr_util.setInnerText(item, '第'+(i+1)+'名：'+e[0]+' ，污染指数：'+e[1]);
+                  docFrag.appendChild(item);
+                }
+              });
+
+              list.appendChild(docFrag);
+          };
+
+          lr_util.addHandler(input, 'blur', function () {
+              var num = showTip(lr_util.trim(input.value), showList);
+
+              list.innerHTML = '';
+
+              if (num) {
+                showList(num);
+              }
+          });
+
+        })();
+
+    </script>
+</body>
+</html>
