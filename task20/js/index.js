@@ -25,7 +25,7 @@
             console.log('右侧删除：' + tip);
         },
         lIn : function (txt) {
-            var arr = this.splitTxt(txt),
+            var arr = this.splitTxt(txt).reverse(),
                 array = this.array;
 
             arr.forEach(function (e, i, arr) {
