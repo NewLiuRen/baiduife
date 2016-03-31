@@ -1,0 +1,80 @@
+input,
+button,
+select {
+    border: 1px solid #999;
+    vertical-align: top;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+textarea {
+    width: 350px;
+    height: 120px;
+    padding: 8px;
+    border: 1px solid #999;
+    resize: none;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+textarea::selection {
+    background: #F24141;
+    color: #fff;
+}
+textarea::-moz-selection {
+    background: #F24141;
+    color: #fff;
+}
+span {
+    font-size: 12px;
+    color: #666;
+}
+input {
+    width: 150px;
+    height: 20px;
+    padding: 0 5px;
+}
+input:focus {
+    -webkit-box-shadow: 0 0 3px rgba(40, 116, 222, 1), 0 0 15px rgba(126, 166, 222, 0.6);
+       -moz-box-shadow: 0 0 3px rgba(40, 116, 222, 1), 0 0 15px rgba(126, 166, 222, 0.6);
+            box-shadow: 0 0 3px rgba(40, 116, 222, 1), 0 0 15px rgba(126, 166, 222, 0.6);
+}
+div {
+    position: relative;
+    height: 300px;
+    margin-top: 20px;
+}
+div div {
+    float: left;
+    display: inline-block;
+    height: 40px;
+    line-height: 24px;
+    min-width: 20px;
+    padding: 8px;
+    margin: 5px;
+    background: #666;
+    color: #fff;
+    font-family: "Microsoft Yahei";
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: all 0.8s ease;
+       -moz-transition: all 0.8s ease;
+            transition: all 0.8s ease;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+div div:hover {
+    background: #F24141;
+    opacity: 0.8;
+    -webkit-box-shadow: 0 0 10px rgba(242, 133, 133, 0.8);
+       -moz-box-shadow: 0 0 10px rgba(242, 133, 133, 0.8);
+            box-shadow: 0 0 10px rgba(242, 133, 133, 0.8);
+}
+div .found {
+    background: #79A2DC;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}

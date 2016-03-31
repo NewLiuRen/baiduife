@@ -3,7 +3,7 @@
      * 建立要控制的数组对象
      */
     function CtrlArray (arr) {
-        var array = [];
+        this.array = [];
     }
     /**
      * 对象原型上添加方法
