@@ -176,10 +176,10 @@
                 divs = Array.prototype.slice.call(this.childNodes, 0);
                 index = -1;
 
-            if (target.nodeName.toLowerCase() === 'div') {
+            if (target.nodeName.toLowerCase() === 'div' && target.parentNode.nodeName.toLowerCase() !== 'body') {
                 index = divs.indexOf(target);
                 ctrl.remove(index);
-                render(ctrl.getArray());
+                wrap.removeChild(divs[index]);
             }
         });
 
